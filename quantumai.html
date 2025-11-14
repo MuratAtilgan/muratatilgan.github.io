@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumAI | Murat Atilgan</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Extra styling for QuantumAI section */
+        .ai-container {
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .ai-header h1 {
+            font-size: 2.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .ai-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .ai-frame {
+            width: 100%;
+            height: 720px;
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .status {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status.online {
+            color: #00ffcc;
+        }
+
+        .status.offline {
+            color: #ff4444;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-link:hover {
+            color: #00bfff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <h1>QUANTUMAI</h1>
+            <p>Intelligent AI Assistant Powered by QUANTUM LAB</p>
+        </header>
+
+        <main class="ai-container">
+            <div class="ai-header">
+                <h1>Welcome to QuantumAI</h1>
+                <p>Interact directly with my deployed AI model — the same technology powering my research projects.</p>
+            </div>
+
+            <!-- Status indicator -->
+            <div id="status" class="status">QUANTUM AI IS YOUR FUTURE</div>
+
+            <!-- Embed Hugging Face chatbot -->
+            <iframe  src="https://MuratAtilgan-murat-personal-llm.hf.space"  class="ai-frame"    title="QuantumAI"      allow="microphone; clipboard-read; clipboard-write">
+            </iframe>
+
+
+
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Murat Atilgan | QuantumAI</p>
+        </footer>
+    </div>
+
+    
+</body>
+</html>
