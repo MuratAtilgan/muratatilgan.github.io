@@ -1,4 +1,5 @@
 import Image from "next/image";
+import CodeStream from "./CodeStream";
 
 export default function Hero() {
   return (
@@ -14,7 +15,7 @@ export default function Hero() {
           <p className="text-zinc-400 text-lg max-w-xl mb-8 leading-relaxed">
             I build production-grade AI systems from first principles. Specializing in LLM Orchestration, RAG pipelines, and bridging complex technical architecture with tangible business value.
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             <a href="#about" className="px-6 py-3 bg-zinc-100 text-zinc-900 rounded-lg font-semibold hover:bg-white transition-colors">
               My Philosophy
             </a>
@@ -22,6 +23,7 @@ export default function Hero() {
               Technical Architecture
             </a>
           </div>
+          <CodeStream />
         </div>
         <div className="relative w-48 h-48 md:w-72 md:h-72 shrink-0">
           <Image 
