@@ -1,5 +1,4 @@
 import Image from "next/image";
-import CodeStream from "./CodeStream";
 
 export default function Hero() {
   return (
@@ -23,7 +22,6 @@ export default function Hero() {
               Technical Architecture
             </a>
           </div>
-          <CodeStream />
         </div>
         <div className="relative w-48 h-48 md:w-72 md:h-72 shrink-0">
           <Image 
