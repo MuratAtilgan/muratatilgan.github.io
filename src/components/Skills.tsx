@@ -26,8 +26,10 @@ result = solution.deploy(env="production")
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !hasStartedTyping) {
+        if (entries[0].isIntersecting) {
           setHasStartedTyping(true);
+        } else {
+          setHasStartedTyping(false);
         }
       },
       { threshold: 0.3 }
@@ -40,7 +42,7 @@ result = solution.deploy(env="production")
     return () => {
       if (terminalRef.current) observer.unobserve(terminalRef.current);
     };
-  }, [hasStartedTyping]);
+  }, []);
 
   useEffect(() => {
     if (hasStartedTyping) {
@@ -54,8 +56,15 @@ result = solution.deploy(env="production")
         }
       }, 15);
       return () => clearInterval(intervalId);
+    } else {
+      setTypedCode("");
     }
   }, [hasStartedTyping, fullCode]);
+
+  const replayAnimation = () => {
+    setHasStartedTyping(false);
+    setTimeout(() => setHasStartedTyping(true), 50);
+  };
 
   const skillCategories = [
     {
@@ -85,7 +94,8 @@ result = solution.deploy(env="production")
 
       <div 
         ref={terminalRef}
-        className="w-full bg-[#0d1117] border border-zinc-800 rounded-xl shadow-lg overflow-hidden font-mono text-sm mb-12"
+        onClick={replayAnimation}
+        className="w-full bg-[#0d1117] border border-zinc-800 hover:border-zinc-700 rounded-xl shadow-lg overflow-hidden font-mono text-sm mb-12 cursor-pointer transition-colors group"
       >
         <div className="bg-[#161b22] px-4 py-3 flex items-center border-b border-zinc-800">
           <div className="flex gap-2">
@@ -93,7 +103,7 @@ result = solution.deploy(env="production")
             <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
             <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
           </div>
-          <div className="mx-auto text-zinc-400 text-xs tracking-wide">systems_architect.py</div>
+          <div className="mx-auto text-zinc-400 text-xs tracking-wide group-hover:text-zinc-300 transition-colors">systems_architect.py (Click to replay)</div>
         </div>
         
         <div className="p-6 md:p-8 overflow-x-auto text-[#c9d1d9] leading-[1.7]">
