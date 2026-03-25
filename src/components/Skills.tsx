@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function Skills() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [typedCode, setTypedCode] = useState("");
+  const [hasStartedTyping, setHasStartedTyping] = useState(false);
+  const terminalRef = useRef<HTMLDivElement>(null);
   
   const fullCode = `from murat.systems import Architect
 
@@ -23,7 +24,26 @@ result = solution.deploy(env="production")
 # -> Team: Fully independent and operational ✓`;
 
   useEffect(() => {
-    if (isModalOpen) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasStartedTyping) {
+          setHasStartedTyping(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    
+    if (terminalRef.current) {
+      observer.observe(terminalRef.current);
+    }
+    
+    return () => {
+      if (terminalRef.current) observer.unobserve(terminalRef.current);
+    };
+  }, [hasStartedTyping]);
+
+  useEffect(() => {
+    if (hasStartedTyping) {
       setTypedCode("");
       let i = 0;
       const intervalId = setInterval(() => {
@@ -35,7 +55,7 @@ result = solution.deploy(env="production")
       }, 15);
       return () => clearInterval(intervalId);
     }
-  }, [isModalOpen, fullCode]);
+  }, [hasStartedTyping, fullCode]);
 
   const skillCategories = [
     {
@@ -58,15 +78,30 @@ result = solution.deploy(env="production")
 
   return (
     <section id="skills" className="mb-24 relative">
-      <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center gap-4 mb-10">
         <h3 className="text-2xl font-semibold">Technical Arsenal</h3>
-        <button 
-          onClick={() => setIsModalOpen(true)}
-          className="ml-auto py-1.5 px-4 bg-[#111] border border-zinc-700 hover:border-sky-500/50 text-zinc-300 hover:text-sky-400 rounded-md text-sm font-mono tracking-wide transition-all shadow-[0_0_15px_rgba(0,0,0,0)] hover:shadow-[0_0_15px_rgba(14,165,233,0.1)] whitespace-nowrap"
-        >
-          Initialize Systems
-        </button>
-        <div className="h-px bg-zinc-800 flex-1 hidden md:block"></div>
+        <div className="h-px bg-zinc-800 flex-1"></div>
+      </div>
+
+      <div 
+        ref={terminalRef}
+        className="w-full bg-[#0d1117] border border-zinc-800 rounded-xl shadow-lg overflow-hidden font-mono text-sm mb-12"
+      >
+        <div className="bg-[#161b22] px-4 py-3 flex items-center border-b border-zinc-800">
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+          </div>
+          <div className="mx-auto text-zinc-400 text-xs tracking-wide">systems_architect.py</div>
+        </div>
+        
+        <div className="p-6 md:p-8 overflow-x-auto text-[#c9d1d9] leading-[1.7]">
+          <pre className="whitespace-pre">
+            <code>{typedCode}</code>
+            <span className="animate-pulse inline-block w-2.5 h-4 bg-sky-500 align-middle ml-1"></span>
+          </pre>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -77,7 +112,7 @@ result = solution.deploy(env="production")
               {category.skills.map((skill) => (
                 <span 
                   key={skill} 
-                  className="px-3 py-1 bg-zinc-800 text-zinc-300 rounded-md text-sm font-medium border border-zinc-700/50"
+                  className="px-3 py-1 bg-zinc-800 text-zinc-300 rounded-md text-[13px] font-medium tracking-wide border border-zinc-700/50"
                 >
                   {skill}
                 </span>
@@ -86,35 +121,6 @@ result = solution.deploy(env="production")
           </div>
         ))}
       </div>
-
-      {isModalOpen && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-[fadeIn_0.2s_ease-out_forwards]" 
-          onClick={() => setIsModalOpen(false)}
-        >
-          <div 
-             className="w-full max-w-2xl bg-[#0d1117] border border-zinc-700 rounded-xl shadow-2xl overflow-hidden font-mono text-sm relative"
-             onClick={(e) => e.stopPropagation()}
-          >
-            <div className="bg-[#161b22] px-4 py-3 flex items-center border-b border-zinc-800">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-              </div>
-              <div className="mx-auto text-zinc-400 text-xs">systems_architect.py</div>
-              <button onClick={() => setIsModalOpen(false)} className="text-zinc-500 hover:text-white text-lg leading-none">&times;</button>
-            </div>
-            
-            <div className="p-6 md:p-8 overflow-x-auto text-[#c9d1d9] leading-[1.7]">
-              <pre className="whitespace-pre">
-                <code>{typedCode}</code>
-                <span className="animate-pulse inline-block w-2.5 h-4 bg-sky-500 align-middle ml-1"></span>
-              </pre>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
