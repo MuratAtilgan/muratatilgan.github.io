@@ -7,7 +7,7 @@ export default function Navbar() {
         <Link href="#about" className="text-zinc-400 hover:text-zinc-100 transition-colors">About</Link>
         <Link href="#work" className="text-zinc-400 hover:text-zinc-100 transition-colors">Research</Link>
         <Link href="#skills" className="text-zinc-400 hover:text-zinc-100 transition-colors">Skills</Link>
-        <a href="mailto:muratatilgan@hotmail.co.uk" className="text-zinc-400 hover:text-zinc-100 transition-colors">Contact</a>
+        <a href="mailto:ma@caledonianai.co.uk" className="text-zinc-400 hover:text-zinc-100 transition-colors">Contact</a>
       </div>
     </nav>
   );
