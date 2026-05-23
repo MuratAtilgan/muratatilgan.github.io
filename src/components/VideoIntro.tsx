@@ -67,26 +67,20 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
           75%  { opacity: 0; }
           100% { opacity: 1; }
         }
-        @keyframes mercury1 {
-          0%   { transform: translate(0px,   0px)  rotate(0deg)   scale(1);    }
-          20%  { transform: translate(18px, -25px) rotate(40deg)  scale(1.12); }
-          45%  { transform: translate(-10px,-40px) rotate(90deg)  scale(0.92); }
-          70%  { transform: translate(25px,  15px) rotate(200deg) scale(1.08); }
-          100% { transform: translate(0px,   0px)  rotate(360deg) scale(1);    }
+        @keyframes orbitCW  { from { transform: rotate(0deg); }   to { transform: rotate(360deg);  } }
+        @keyframes orbitCCW { from { transform: rotate(0deg); }   to { transform: rotate(-360deg); } }
+        @keyframes wobble1 {
+          0%,100% { transform: rotate(-8deg)  scale(1);    }
+          50%     { transform: rotate(12deg)  scale(1.12); }
         }
-        @keyframes mercury2 {
-          0%   { transform: translate(0px,  0px)  rotate(0deg)   scale(1);    }
-          30%  { transform: translate(-20px, 20px) rotate(-55deg) scale(0.9);  }
-          55%  { transform: translate(15px,  35px) rotate(120deg) scale(1.15); }
-          80%  { transform: translate(-25px,-10px) rotate(250deg) scale(0.95); }
-          100% { transform: translate(0px,  0px)  rotate(360deg) scale(1);    }
+        @keyframes wobble2 {
+          0%,100% { transform: rotate(6deg)   scale(0.94); }
+          50%     { transform: rotate(-14deg) scale(1.08); }
         }
-        @keyframes mercury3 {
-          0%   { transform: translate(0px,  0px)  rotate(0deg)   scale(1);    }
-          25%  { transform: translate(22px,  18px) rotate(70deg)  scale(1.1);  }
-          50%  { transform: translate(-15px, 30px) rotate(160deg) scale(0.88); }
-          75%  { transform: translate(10px, -20px) rotate(280deg) scale(1.06); }
-          100% { transform: translate(0px,  0px)  rotate(360deg) scale(1);    }
+        @keyframes wobble3 {
+          0%,100% { transform: rotate(0deg)   scale(1);    }
+          33%     { transform: rotate(18deg)  scale(1.1);  }
+          66%     { transform: rotate(-10deg) scale(0.9);  }
         }
       `}</style>
 
@@ -120,52 +114,61 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
         display: "flex", alignItems: "center", justifyContent: "center",
       }}>
 
-        {/* Mercury Drop 1 — top-right of lens */}
+        {/* Mercury Drop 1 — orbits CW 16s, starts top-right */}
         <div style={{
-          position: "absolute",
-          top: "50%", left: "50%",
-          transform: "translate(calc(-50% + min(37vw, 37vh)), calc(-50% - min(28vw, 28vh)))",
+          position: "absolute", top: "50%", left: "50%",
+          width: 0, height: 0,
           zIndex: 2, pointerEvents: "none",
-          animation: `t2Appear ${OPEN_DURATION + 700}ms ease forwards`,
+          animation: `t2Appear ${OPEN_DURATION + 700}ms ease forwards, orbitCW 16s linear infinite`,
+          animationDelay: `0s, -2s`,
         }}>
-          <img src="/mercury-drop-1.png" alt="" style={{
-            width: "min(16vw, 16vh)", height: "auto", display: "block",
-            animation: "mercury1 9s ease-in-out infinite",
-            mixBlendMode: "screen" as const,
-            filter: "invert(1) brightness(2.8) contrast(1.2)",
-          }} />
+          <div style={{ position: "absolute", top: 0, left: 0,
+            transform: "translate(-50%, calc(-1 * min(46vw, 46vh)))" }}>
+            <img src="/mercury-drop-1.png" alt="" style={{
+              width: "min(13vw, 13vh)", height: "auto", display: "block",
+              animation: "wobble1 4s ease-in-out infinite",
+              mixBlendMode: "screen" as const,
+              filter: "brightness(1.1) contrast(1.2) saturate(0.4)",
+            }} />
+          </div>
         </div>
 
-        {/* Mercury Drop 2 — left of lens */}
+        {/* Mercury Drop 2 — orbits CCW 22s, starts left */}
         <div style={{
-          position: "absolute",
-          top: "50%", left: "50%",
-          transform: "translate(calc(-50% - min(42vw, 42vh)), calc(-50% + min(5vw, 5vh)))",
+          position: "absolute", top: "50%", left: "50%",
+          width: 0, height: 0,
           zIndex: 2, pointerEvents: "none",
-          animation: `t2Appear ${OPEN_DURATION + 900}ms ease forwards`,
+          animation: `t2Appear ${OPEN_DURATION + 900}ms ease forwards, orbitCCW 22s linear infinite`,
+          animationDelay: `0s, -8s`,
         }}>
-          <img src="/mercury-drop-2.png" alt="" style={{
-            width: "min(13vw, 13vh)", height: "auto", display: "block",
-            animation: "mercury2 12s ease-in-out infinite",
-            mixBlendMode: "screen" as const,
-            filter: "invert(1) brightness(2.8) contrast(1.2)",
-          }} />
+          <div style={{ position: "absolute", top: 0, left: 0,
+            transform: "translate(-50%, calc(-1 * min(48vw, 48vh)))" }}>
+            <img src="/mercury-drop-2.png" alt="" style={{
+              width: "min(11vw, 11vh)", height: "auto", display: "block",
+              animation: "wobble2 6s ease-in-out infinite",
+              mixBlendMode: "screen" as const,
+              filter: "brightness(1.1) contrast(1.2) saturate(0.4)",
+            }} />
+          </div>
         </div>
 
-        {/* Mercury Drop 3 — bottom-right of lens */}
+        {/* Mercury Drop 3 — orbits CW 12s, starts bottom */}
         <div style={{
-          position: "absolute",
-          top: "50%", left: "50%",
-          transform: "translate(calc(-50% + min(30vw, 30vh)), calc(-50% + min(30vw, 30vh)))",
+          position: "absolute", top: "50%", left: "50%",
+          width: 0, height: 0,
           zIndex: 2, pointerEvents: "none",
-          animation: `t2Appear ${OPEN_DURATION + 1100}ms ease forwards`,
+          animation: `t2Appear ${OPEN_DURATION + 1100}ms ease forwards, orbitCW 12s linear infinite`,
+          animationDelay: `0s, -6s`,
         }}>
-          <img src="/mercury-drop-3.png" alt="" style={{
-            width: "min(14vw, 14vh)", height: "auto", display: "block",
-            animation: "mercury3 10s ease-in-out infinite",
-            mixBlendMode: "screen" as const,
-            filter: "invert(1) brightness(2.8) contrast(1.2)",
-          }} />
+          <div style={{ position: "absolute", top: 0, left: 0,
+            transform: "translate(-50%, calc(-1 * min(44vw, 44vh)))" }}>
+            <img src="/mercury-drop-3.png" alt="" style={{
+              width: "min(12vw, 12vh)", height: "auto", display: "block",
+              animation: "wobble3 5s ease-in-out infinite",
+              mixBlendMode: "screen" as const,
+              filter: "brightness(1.1) contrast(1.2) saturate(0.4)",
+            }} />
+          </div>
         </div>
 
         {/* HUD outer ring */}
