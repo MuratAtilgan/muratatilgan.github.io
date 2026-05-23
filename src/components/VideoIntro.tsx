@@ -74,56 +74,42 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
         {/* HUD outer ring */}
         <div style={{
           position: "absolute",
-          width: `calc(${LENS_SIZE} + 80px)`,
-          height: `calc(${LENS_SIZE} + 80px)`,
+          width: `calc(${LENS_SIZE} + 160px)`,
+          height: `calc(${LENS_SIZE} + 160px)`,
           borderRadius: "50%",
           border: "1px solid rgba(125, 211, 252, 0.25)",
           animation: `hudFadeIn ${OPEN_DURATION + 200}ms ease forwards`,
         }}>
-          {/* f/stop — top left */}
+          {/* TOP — ◉ ACTIVE, perfectly centered */}
           <span style={{
-            position: "absolute", top: "30px", left: "50%",
-            transform: "translateX(-90px)",
-            color: "rgba(125,211,252,0.8)", fontSize: "11px",
-            fontFamily: "monospace", letterSpacing: "0.1em",
-          }}>LLM</span>
-
-          {/* Focal length — top center */}
-          <span style={{
-            position: "absolute", top: "12px", left: "50%",
+            position: "absolute", top: "18px", left: "50%",
             transform: "translateX(-50%)",
-            color: "rgba(125,211,252,0.5)", fontSize: "10px",
-            fontFamily: "monospace", letterSpacing: "0.15em",
-          }}>AGENT</span>
-
-          {/* REC indicator — top right */}
-          <span style={{
-            position: "absolute", top: "30px", left: "50%",
-            transform: "translateX(50px)",
             color: "rgba(125,211,252,0.9)", fontSize: "11px",
-            fontFamily: "monospace",
+            fontFamily: "monospace", letterSpacing: "0.15em",
+            whiteSpace: "nowrap",
             animation: "recBlink 1.2s ease infinite",
           }}>◉ ACTIVE</span>
 
-          {/* Focus distance — bottom */}
+          {/* BOTTOM — CONTEXT: 128K, perfectly centered */}
           <span style={{
-            position: "absolute", bottom: "14px", left: "50%",
+            position: "absolute", bottom: "18px", left: "50%",
             transform: "translateX(-50%)",
-            color: "rgba(125,211,252,0.4)", fontSize: "10px",
-            fontFamily: "monospace", letterSpacing: "0.2em", whiteSpace: "nowrap",
-          }}>CONTEXT: 128K ──●──</span>
+            color: "rgba(125,211,252,0.45)", fontSize: "10px",
+            fontFamily: "monospace", letterSpacing: "0.2em",
+            whiteSpace: "nowrap",
+          }}>CONTEXT: 128K</span>
 
-          {/* APERTURE — left vertical */}
+          {/* LEFT — INFERENCE, vertical */}
           <span style={{
-            position: "absolute", top: "50%", left: "4px",
+            position: "absolute", top: "50%", left: "18px",
             transform: "translateY(-50%) rotate(-90deg)",
             color: "rgba(125,211,252,0.3)", fontSize: "9px",
             fontFamily: "monospace", letterSpacing: "0.3em",
           }}>INFERENCE</span>
 
-          {/* FOCUS — right vertical */}
+          {/* RIGHT — LATENCY, vertical */}
           <span style={{
-            position: "absolute", top: "50%", right: "4px",
+            position: "absolute", top: "50%", right: "18px",
             transform: "translateY(-50%) rotate(90deg)",
             color: "rgba(125,211,252,0.3)", fontSize: "9px",
             fontFamily: "monospace", letterSpacing: "0.3em",
