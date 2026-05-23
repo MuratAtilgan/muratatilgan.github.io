@@ -67,6 +67,27 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
           75%  { opacity: 0; }
           100% { opacity: 1; }
         }
+        @keyframes mercury1 {
+          0%   { transform: translate(0px,   0px)  rotate(0deg)   scale(1);    }
+          20%  { transform: translate(18px, -25px) rotate(40deg)  scale(1.12); }
+          45%  { transform: translate(-10px,-40px) rotate(90deg)  scale(0.92); }
+          70%  { transform: translate(25px,  15px) rotate(200deg) scale(1.08); }
+          100% { transform: translate(0px,   0px)  rotate(360deg) scale(1);    }
+        }
+        @keyframes mercury2 {
+          0%   { transform: translate(0px,  0px)  rotate(0deg)   scale(1);    }
+          30%  { transform: translate(-20px, 20px) rotate(-55deg) scale(0.9);  }
+          55%  { transform: translate(15px,  35px) rotate(120deg) scale(1.15); }
+          80%  { transform: translate(-25px,-10px) rotate(250deg) scale(0.95); }
+          100% { transform: translate(0px,  0px)  rotate(360deg) scale(1);    }
+        }
+        @keyframes mercury3 {
+          0%   { transform: translate(0px,  0px)  rotate(0deg)   scale(1);    }
+          25%  { transform: translate(22px,  18px) rotate(70deg)  scale(1.1);  }
+          50%  { transform: translate(-15px, 30px) rotate(160deg) scale(0.88); }
+          75%  { transform: translate(10px, -20px) rotate(280deg) scale(1.06); }
+          100% { transform: translate(0px,  0px)  rotate(360deg) scale(1);    }
+        }
       `}</style>
 
       {/* Goo filter — must be in DOM before used */}
@@ -99,66 +120,59 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
         display: "flex", alignItems: "center", justifyContent: "center",
       }}>
 
-        {/* T2 Liquid Metal Blobs — orbit the lens edge */}
-        <div style={{
-          position: "absolute",
-          width: `calc(${LENS_SIZE} + 52px)`,
-          height: `calc(${LENS_SIZE} + 52px)`,
-          filter: "url(#t2-goo)",
-          animation: `t2Appear ${OPEN_DURATION + 700}ms ease forwards`,
-          zIndex: 2,
-          pointerEvents: "none",
-        }}>
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 200 200"
-            style={{ overflow: "visible" }}
-          >
-            {/* Hidden orbit path — circle edge of the lens ring */}
-            <path
-              id="t2-orbit"
-              d="M 100,3 A 97,97 0 1,1 99.999,3"
-              fill="none"
-              stroke="none"
-            />
+        {/* Mercury Drop 1 — top-right of lens */}
+        <img
+          src="/mercury-drop-1.png"
+          alt=""
+          style={{
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(calc(-50% + min(37vw, 37vh)), calc(-50% - min(28vw, 28vh)))",
+            width: "min(16vw, 16vh)",
+            height: "auto",
+            animation: `t2Appear ${OPEN_DURATION + 700}ms ease forwards, mercury1 9s ease-in-out infinite`,
+            mixBlendMode: "screen" as const,
+            filter: "invert(1) brightness(2.8) contrast(1.2) grayscale(0.3)",
+            zIndex: 2,
+            pointerEvents: "none",
+          }}
+        />
 
-            {/* Blob 1 — large, slowest (14s) */}
-            <circle r="7.5" fill="url(#chrome-grad)">
-              <animateMotion dur="14s" repeatCount="indefinite" begin="0s">
-                <mpath href="#t2-orbit" />
-              </animateMotion>
-            </circle>
+        {/* Mercury Drop 2 — left of lens */}
+        <img
+          src="/mercury-drop-2.png"
+          alt=""
+          style={{
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(calc(-50% - min(42vw, 42vh)), calc(-50% + min(5vw, 5vh)))",
+            width: "min(13vw, 13vh)",
+            height: "auto",
+            animation: `t2Appear ${OPEN_DURATION + 900}ms ease forwards, mercury2 12s ease-in-out infinite`,
+            mixBlendMode: "screen" as const,
+            filter: "invert(1) brightness(2.8) contrast(1.2) grayscale(0.3)",
+            zIndex: 2,
+            pointerEvents: "none",
+          }}
+        />
 
-            {/* Blob 2 — medium (10s, chasing blob 1) */}
-            <circle r="5.5" fill="url(#chrome-grad)">
-              <animateMotion dur="10s" repeatCount="indefinite" begin="-2s">
-                <mpath href="#t2-orbit" />
-              </animateMotion>
-            </circle>
-
-            {/* Blob 3 — small (8s) */}
-            <circle r="4" fill="url(#chrome-grad)">
-              <animateMotion dur="8s" repeatCount="indefinite" begin="-5s">
-                <mpath href="#t2-orbit" />
-              </animateMotion>
-            </circle>
-
-            {/* Blob 4 — tiny straggler (18s, very slow) */}
-            <circle r="3" fill="url(#chrome-grad)">
-              <animateMotion dur="18s" repeatCount="indefinite" begin="-9s">
-                <mpath href="#t2-orbit" />
-              </animateMotion>
-            </circle>
-
-            {/* Blob 5 — micro (6s, fastest, creates chaos) */}
-            <circle r="2.5" fill="url(#chrome-grad)">
-              <animateMotion dur="6s" repeatCount="indefinite" begin="-3.5s">
-                <mpath href="#t2-orbit" />
-              </animateMotion>
-            </circle>
-          </svg>
-        </div>
+        {/* Mercury Drop 3 — bottom-right of lens */}
+        <img
+          src="/mercury-drop-3.png"
+          alt=""
+          style={{
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(calc(-50% + min(30vw, 30vh)), calc(-50% + min(30vw, 30vh)))",
+            width: "min(14vw, 14vh)",
+            height: "auto",
+            animation: `t2Appear ${OPEN_DURATION + 1100}ms ease forwards, mercury3 10s ease-in-out infinite`,
+            mixBlendMode: "screen" as const,
+            filter: "invert(1) brightness(2.8) contrast(1.2) grayscale(0.3)",
+            zIndex: 2,
+            pointerEvents: "none",
+          }}
+        />
 
         {/* HUD outer ring */}
         <div style={{
