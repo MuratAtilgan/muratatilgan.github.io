@@ -121,58 +121,52 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
       }}>
 
         {/* Mercury Drop 1 — top-right of lens */}
-        <img
-          src="/mercury-drop-1.png"
-          alt=""
-          style={{
-            position: "absolute",
-            top: "50%", left: "50%",
-            transform: "translate(calc(-50% + min(37vw, 37vh)), calc(-50% - min(28vw, 28vh)))",
-            width: "min(16vw, 16vh)",
-            height: "auto",
-            animation: `t2Appear ${OPEN_DURATION + 700}ms ease forwards, mercury1 9s ease-in-out infinite`,
+        <div style={{
+          position: "absolute",
+          top: "50%", left: "50%",
+          transform: "translate(calc(-50% + min(37vw, 37vh)), calc(-50% - min(28vw, 28vh)))",
+          zIndex: 2, pointerEvents: "none",
+          animation: `t2Appear ${OPEN_DURATION + 700}ms ease forwards`,
+        }}>
+          <img src="/mercury-drop-1.png" alt="" style={{
+            width: "min(16vw, 16vh)", height: "auto", display: "block",
+            animation: "mercury1 9s ease-in-out infinite",
             mixBlendMode: "screen" as const,
-            filter: "invert(1) brightness(2.8) contrast(1.2) grayscale(0.3)",
-            zIndex: 2,
-            pointerEvents: "none",
-          }}
-        />
+            filter: "invert(1) brightness(2.8) contrast(1.2)",
+          }} />
+        </div>
 
         {/* Mercury Drop 2 — left of lens */}
-        <img
-          src="/mercury-drop-2.png"
-          alt=""
-          style={{
-            position: "absolute",
-            top: "50%", left: "50%",
-            transform: "translate(calc(-50% - min(42vw, 42vh)), calc(-50% + min(5vw, 5vh)))",
-            width: "min(13vw, 13vh)",
-            height: "auto",
-            animation: `t2Appear ${OPEN_DURATION + 900}ms ease forwards, mercury2 12s ease-in-out infinite`,
+        <div style={{
+          position: "absolute",
+          top: "50%", left: "50%",
+          transform: "translate(calc(-50% - min(42vw, 42vh)), calc(-50% + min(5vw, 5vh)))",
+          zIndex: 2, pointerEvents: "none",
+          animation: `t2Appear ${OPEN_DURATION + 900}ms ease forwards`,
+        }}>
+          <img src="/mercury-drop-2.png" alt="" style={{
+            width: "min(13vw, 13vh)", height: "auto", display: "block",
+            animation: "mercury2 12s ease-in-out infinite",
             mixBlendMode: "screen" as const,
-            filter: "invert(1) brightness(2.8) contrast(1.2) grayscale(0.3)",
-            zIndex: 2,
-            pointerEvents: "none",
-          }}
-        />
+            filter: "invert(1) brightness(2.8) contrast(1.2)",
+          }} />
+        </div>
 
         {/* Mercury Drop 3 — bottom-right of lens */}
-        <img
-          src="/mercury-drop-3.png"
-          alt=""
-          style={{
-            position: "absolute",
-            top: "50%", left: "50%",
-            transform: "translate(calc(-50% + min(30vw, 30vh)), calc(-50% + min(30vw, 30vh)))",
-            width: "min(14vw, 14vh)",
-            height: "auto",
-            animation: `t2Appear ${OPEN_DURATION + 1100}ms ease forwards, mercury3 10s ease-in-out infinite`,
+        <div style={{
+          position: "absolute",
+          top: "50%", left: "50%",
+          transform: "translate(calc(-50% + min(30vw, 30vh)), calc(-50% + min(30vw, 30vh)))",
+          zIndex: 2, pointerEvents: "none",
+          animation: `t2Appear ${OPEN_DURATION + 1100}ms ease forwards`,
+        }}>
+          <img src="/mercury-drop-3.png" alt="" style={{
+            width: "min(14vw, 14vh)", height: "auto", display: "block",
+            animation: "mercury3 10s ease-in-out infinite",
             mixBlendMode: "screen" as const,
-            filter: "invert(1) brightness(2.8) contrast(1.2) grayscale(0.3)",
-            zIndex: 2,
-            pointerEvents: "none",
-          }}
-        />
+            filter: "invert(1) brightness(2.8) contrast(1.2)",
+          }} />
+        </div>
 
         {/* HUD outer ring */}
         <div style={{
