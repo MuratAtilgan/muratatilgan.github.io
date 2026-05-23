@@ -12,7 +12,6 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [phase, setPhase] = useState<Phase>("opening");
 
-  // After aperture opens → play video
   useEffect(() => {
     const t = setTimeout(() => {
       setPhase("playing");
@@ -21,7 +20,6 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
     return () => clearTimeout(t);
   }, []);
 
-  // Video ends → start closing
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -67,8 +65,8 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
           75%  { opacity: 0; }
           100% { opacity: 1; }
         }
-        @keyframes orbitCW  { from { transform: rotate(0deg); }   to { transform: rotate(360deg);  } }
-        @keyframes orbitCCW { from { transform: rotate(0deg); }   to { transform: rotate(-360deg); } }
+        @keyframes orbitCW  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+        @keyframes orbitCCW { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
         @keyframes wobble1 {
           0%,100% { transform: rotate(-8deg)  scale(1);    }
           50%     { transform: rotate(12deg)  scale(1.12); }
@@ -84,29 +82,6 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
         }
       `}</style>
 
-      {/* Goo filter — must be in DOM before used */}
-      <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}>
-        <defs>
-          <filter id="t2-goo" x="-25%" y="-25%" width="150%" height="150%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-            <feColorMatrix
-              in="blur"
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -11"
-              result="goo"
-            />
-            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-          </filter>
-          <radialGradient id="chrome-grad" cx="30%" cy="22%" r="65%">
-            <stop offset="0%"   stopColor="#ffffff" />
-            <stop offset="20%"  stopColor="#e8e8e8" />
-            <stop offset="50%"  stopColor="#a0a0a0" />
-            <stop offset="80%"  stopColor="#505050" />
-            <stop offset="100%" stopColor="#1a1a1a" />
-          </radialGradient>
-        </defs>
-      </svg>
-
       {/* Backdrop */}
       <div style={{
         position: "fixed", inset: 0, zIndex: 9999,
@@ -114,59 +89,50 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
         display: "flex", alignItems: "center", justifyContent: "center",
       }}>
 
-        {/* Mercury Drop 1 — orbits CW 16s, starts top-right */}
+        {/* Mercury Drop 1 — orbits CW 16s */}
         <div style={{
           position: "absolute", top: "50%", left: "50%",
-          width: 0, height: 0,
-          zIndex: 2, pointerEvents: "none",
+          width: 0, height: 0, zIndex: 2, pointerEvents: "none",
           animation: `t2Appear ${OPEN_DURATION + 700}ms ease forwards, orbitCW 16s linear infinite`,
-          animationDelay: `0s, -2s`,
+          animationDelay: "0s, -2s",
         }}>
           <div style={{ position: "absolute", top: 0, left: 0,
             transform: "translate(-50%, calc(-1 * min(46vw, 46vh)))" }}>
             <img src="/mercury-drop-1.png" alt="" style={{
               width: "min(13vw, 13vh)", height: "auto", display: "block",
               animation: "wobble1 4s ease-in-out infinite",
-              mixBlendMode: "screen" as const,
-              filter: "brightness(1.1) contrast(1.2) saturate(0.4)",
             }} />
           </div>
         </div>
 
-        {/* Mercury Drop 2 — orbits CCW 22s, starts left */}
+        {/* Mercury Drop 2 — orbits CCW 22s */}
         <div style={{
           position: "absolute", top: "50%", left: "50%",
-          width: 0, height: 0,
-          zIndex: 2, pointerEvents: "none",
+          width: 0, height: 0, zIndex: 2, pointerEvents: "none",
           animation: `t2Appear ${OPEN_DURATION + 900}ms ease forwards, orbitCCW 22s linear infinite`,
-          animationDelay: `0s, -8s`,
+          animationDelay: "0s, -8s",
         }}>
           <div style={{ position: "absolute", top: 0, left: 0,
             transform: "translate(-50%, calc(-1 * min(48vw, 48vh)))" }}>
             <img src="/mercury-drop-2.png" alt="" style={{
               width: "min(11vw, 11vh)", height: "auto", display: "block",
               animation: "wobble2 6s ease-in-out infinite",
-              mixBlendMode: "screen" as const,
-              filter: "brightness(1.1) contrast(1.2) saturate(0.4)",
             }} />
           </div>
         </div>
 
-        {/* Mercury Drop 3 — orbits CW 12s, starts bottom */}
+        {/* Mercury Drop 3 — orbits CW 12s */}
         <div style={{
           position: "absolute", top: "50%", left: "50%",
-          width: 0, height: 0,
-          zIndex: 2, pointerEvents: "none",
+          width: 0, height: 0, zIndex: 2, pointerEvents: "none",
           animation: `t2Appear ${OPEN_DURATION + 1100}ms ease forwards, orbitCW 12s linear infinite`,
-          animationDelay: `0s, -6s`,
+          animationDelay: "0s, -6s",
         }}>
           <div style={{ position: "absolute", top: 0, left: 0,
             transform: "translate(-50%, calc(-1 * min(44vw, 44vh)))" }}>
             <img src="/mercury-drop-3.png" alt="" style={{
               width: "min(12vw, 12vh)", height: "auto", display: "block",
               animation: "wobble3 5s ease-in-out infinite",
-              mixBlendMode: "screen" as const,
-              filter: "brightness(1.1) contrast(1.2) saturate(0.4)",
             }} />
           </div>
         </div>
