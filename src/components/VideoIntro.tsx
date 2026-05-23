@@ -86,7 +86,7 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
             transform: "translateX(-90px)",
             color: "rgba(125,211,252,0.8)", fontSize: "11px",
             fontFamily: "monospace", letterSpacing: "0.1em",
-          }}>f/1.8</span>
+          }}>LLM</span>
 
           {/* Focal length — top center */}
           <span style={{
@@ -94,16 +94,16 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
             transform: "translateX(-50%)",
             color: "rgba(125,211,252,0.5)", fontSize: "10px",
             fontFamily: "monospace", letterSpacing: "0.15em",
-          }}>50mm</span>
+          }}>AGENT</span>
 
           {/* REC indicator — top right */}
           <span style={{
             position: "absolute", top: "30px", left: "50%",
             transform: "translateX(50px)",
-            color: "#ef4444", fontSize: "11px",
+            color: "rgba(125,211,252,0.9)", fontSize: "11px",
             fontFamily: "monospace",
             animation: "recBlink 1.2s ease infinite",
-          }}>◉ REC</span>
+          }}>◉ ACTIVE</span>
 
           {/* Focus distance — bottom */}
           <span style={{
@@ -111,7 +111,7 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
             transform: "translateX(-50%)",
             color: "rgba(125,211,252,0.4)", fontSize: "10px",
             fontFamily: "monospace", letterSpacing: "0.2em", whiteSpace: "nowrap",
-          }}>∞ ─────●───── 1m</span>
+          }}>CONTEXT: 128K ──●──</span>
 
           {/* APERTURE — left vertical */}
           <span style={{
@@ -119,7 +119,7 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
             transform: "translateY(-50%) rotate(-90deg)",
             color: "rgba(125,211,252,0.3)", fontSize: "9px",
             fontFamily: "monospace", letterSpacing: "0.3em",
-          }}>APERTURE</span>
+          }}>INFERENCE</span>
 
           {/* FOCUS — right vertical */}
           <span style={{
@@ -127,7 +127,7 @@ export default function VideoIntro({ onComplete }: { onComplete: () => void }) {
             transform: "translateY(-50%) rotate(90deg)",
             color: "rgba(125,211,252,0.3)", fontSize: "9px",
             fontFamily: "monospace", letterSpacing: "0.3em",
-          }}>FOCUS</span>
+          }}>LATENCY</span>
         </div>
 
         {/* Glass rings */}
