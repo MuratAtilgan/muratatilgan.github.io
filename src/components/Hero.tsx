@@ -9,7 +9,7 @@ export default function Hero() {
             Murat Atilgan
           </h1>
           <h2 className="text-xl md:text-2xl text-sky-400 font-medium mb-6">
-            Senior Systems & AI Engineer | Agentic AI Specialist
+            Senior Systems & AI Engineer
           </h2>
           <p className="text-zinc-400 text-lg max-w-xl mb-8 leading-relaxed">
             I build production-grade AI systems from first principles. Specializing in LLM Orchestration, RAG pipelines, and bridging complex technical architecture with tangible business value.
