@@ -81,7 +81,7 @@ result = solution.deploy(env="production")
     },
     {
       title: "Infrastructure & Networking",
-      skills: ["Docker", "AWS Cloud", "FastAPI", "REST APIs", "Cisco CCNA2", "Linux"],
+      skills: ["Docker", "AWS Cloud", "FastAPI", "REST APIs", "Cisco CCNA", "Linux"],
     },
   ];
 
