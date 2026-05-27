@@ -19,7 +19,7 @@ export default function Experience() {
     },
     {
       title: "Executive Leadership & Strategic Operations",
-      company: "Manufacturing Directors, NATO",
+      company: "Manufacturing & Operations Leadership, NATO",
       period: "2004 – 2024",
       description: "Prior to software engineering, I spent 20 years directing large-scale international operations. From managing multi-million-pound supply chains to executing mission-critical logistics for NATO. This forged my methodology for system-level reliability and strict execution boundaries.",
     },
