@@ -7,6 +7,7 @@ import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import ProductShowcase from "@/components/ProductShowcase";
 import Footer from "@/components/Footer";
 import VideoIntro from "@/components/VideoIntro";
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Hero />
       <About />
       <Experience />
+      <ProductShowcase />
       <Projects />
       <Skills />
       <Footer />
