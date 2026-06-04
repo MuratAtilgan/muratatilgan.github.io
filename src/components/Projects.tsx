@@ -16,14 +16,6 @@ export default function Projects() {
       tags: ["AGI Theory", "Neurotechnology"],
       link: "/Biological_Prerequisite_AGI_Atilgan.pdf"
     },
-    {
-      title: "Production Web & Mobile Applications",
-      type: "Engineering",
-      date: "2024 - Present",
-      description: "Developed full-stack web applications featuring secure authentication, payment integration, and multi-provider API routing utilizing PostgreSQL and Cloud Infrastructure.",
-      tags: ["Full-Stack", "Cloud", "PostgreSQL"],
-      link: "#work"
-    },
   ];
 
   return (
