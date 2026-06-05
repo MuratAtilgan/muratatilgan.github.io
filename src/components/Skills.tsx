@@ -69,7 +69,7 @@ result = solution.deploy(env="production")
   const skillCategories = [
     {
       title: "AI & Machine Learning",
-      skills: ["LLM Orchestration", "RAG Pipelines", "Domain Isolation", "Agentic AI", "MLOps", "AWS AI Services", "ChromaDB", "LoRA / QLoRA"],
+      skills: ["LLM Orchestration", "RAG Pipelines", "Domain Isolation", "MLOps", "AWS AI Services", "ChromaDB", "LoRA / QLoRA"],
     },
     {
       title: "Systems & Backend",
@@ -81,7 +81,7 @@ result = solution.deploy(env="production")
     },
     {
       title: "Infrastructure & Networking",
-      skills: ["Docker", "AWS Cloud", "FastAPI", "REST APIs", "Cisco CCNA", "Linux"],
+      skills: ["Docker", "AWS Cloud", "FastAPI", "REST APIs", "Cisco CCNA2", "Linux"],
     },
   ];
 

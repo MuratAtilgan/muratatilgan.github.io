@@ -8,7 +8,7 @@ export default function About() {
       
       <div className="text-zinc-400 space-y-8 text-lg leading-relaxed">
         <p>
-          I offer a highly unconventional and powerful profile: <strong className="text-zinc-200">the rare combination of 22 years of executive operations leadership mixed with deep, modern technical expertise in Agentic AI systems.</strong> I do not just write code; I engineer system-level solutions that resolve real-world business bottlenecks.
+          I offer a highly unconventional and powerful profile: <strong className="text-zinc-200">the rare combination of 22 years of executive operations leadership mixed with deep, modern technical expertise in systems engineering, backend infrastructure, and AI orchestration.</strong> I do not just write code; I engineer system-level solutions that resolve real-world business bottlenecks.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 mt-8">
@@ -28,7 +28,7 @@ export default function About() {
               Execution Discipline & Ownership
             </h4>
             <p className="text-sm">
-              My technical methodology is forged strictly from my operational background—from directing multi-million-pound supply chains to executing strategic operations at NATO. I bring mission-critical discipline to software architecture. I deliver what I commit to, without leaving systems in incomplete states.
+              My technical methodology is forged strictly from my operational background, from directing multi-million-pound supply chains to executing strategic operations at NATO. I bring mission-critical discipline to software architecture. I deliver what I commit to, without leaving systems in incomplete states.
             </p>
           </div>
         </div>

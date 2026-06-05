@@ -9,10 +9,10 @@ export default function Hero() {
             Murat Atilgan
           </h1>
           <h2 className="text-xl md:text-2xl text-sky-400 font-medium mb-6">
-            Senior Systems & AI Engineer
+            Systems & Infrastructure Engineer | Backend & Networking
           </h2>
           <p className="text-zinc-400 text-lg max-w-xl mb-8 leading-relaxed">
-            I build production-grade AI systems from first principles. Specializing in LLM Orchestration, RAG pipelines, and bridging complex technical architecture with tangible business value.
+            Pragmatic systems engineer and software developer with 22 years of international business leadership. I build production-grade backend infrastructure, architect LLM orchestration platforms, and engineer full-stack systems from first principles, bridging deep technical architecture with real operational outcomes.
           </p>
           <div className="flex flex-wrap gap-4">
             <a href="#about" className="px-6 py-3 bg-zinc-100 text-zinc-900 rounded-lg font-semibold hover:bg-white transition-colors">

@@ -9,17 +9,17 @@ export default function Experience() {
       title: "Creator & Systems Architect",
       company: "QAI Lab",
       period: "2024 – Present",
-      description: "Engineered a production-ready LLM orchestration platform (v8.4) achieving consistent inference quality through proprietary reactor isolation. Handled complex multi-modal input processing with retrieval-backed memory and dynamic API routing across 8+ providers.",
+      description: "Architected a production-grade LLM orchestration platform (v8.4) from blank page to deployment, as sole architect across all system layers. Implemented domain-isolated reactor architecture achieving ~95% cross-domain inference accuracy versus ~40% in conventional systems. Integrated 10+ LLM providers via async Python backend (FastAPI + WebSocket) with React/Next.js frontend.",
     },
     {
       title: "Systems Architect & Developer",
       company: "RouteMind",
-      period: "In Development",
-      description: "Building an intelligent routing and optimization system leveraging advanced algorithms and data structures. Designed to solve complex pathfinding and resource allocation challenges in constrained environments.",
+      period: "2024 – Present",
+      description: "Engineered an intelligent route optimization platform for fleet and delivery operations. Architected constraint-based vehicle routing algorithms with real-time dispatch and a cross-platform mobile driver application.",
     },
     {
       title: "Executive Leadership & Strategic Operations",
-      company: "Manufacturing & Operations Leadership, NATO",
+      company: "Manufacturing Directors, NATO",
       period: "2004 – 2024",
       description: "Prior to software engineering, I spent 20 years directing large-scale international operations. From managing multi-million-pound supply chains to executing mission-critical logistics for NATO. This forged my methodology for system-level reliability and strict execution boundaries.",
     },
@@ -56,7 +56,7 @@ export default function Experience() {
 
                 <div className={`overflow-hidden transition-all duration-700 ease-in-out ${isDiagramOpen ? 'max-h-[2000px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'}`}>
                   <div className="p-8 bg-[#151515] border border-zinc-800/80 rounded-xl overflow-x-auto shadow-2xl">
-                    <h5 className="text-zinc-200 font-bold mb-8 text-center text-[15px] tracking-wide">QAI Lab — Domain-Isolated Reactor Architecture</h5>
+                    <h5 className="text-zinc-200 font-bold mb-8 text-center text-[15px] tracking-wide">QAI Lab: Domain-Isolated Reactor Architecture</h5>
                     <div className="min-w-[500px] flex flex-col items-center text-[13px] font-mono text-zinc-300">
                       <div className="border border-sky-900/40 bg-sky-900/10 px-8 py-2.5 rounded text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.1)]">
                         User Query
