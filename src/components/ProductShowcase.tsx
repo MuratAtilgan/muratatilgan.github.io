@@ -102,7 +102,6 @@ interface Muster {
 
 export default function ProductShowcase() {
   const [activeId, setActiveId]   = useState('documiner');
-  const [logoKey, setLogoKey]     = useState(0);
   const [typedCode, setTypedCode] = useState('');
   const [isTyping, setIsTyping]   = useState(false);
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -128,7 +127,6 @@ export default function ProductShowcase() {
 
   function switchTab(id: string) {
     setActiveId(id);
-    setLogoKey(k => k + 1);
   }
 
   useEffect(() => {
@@ -181,34 +179,21 @@ export default function ProductShowcase() {
       <div className="bg-zinc-900/30 border border-zinc-800 rounded-xl overflow-hidden">
 
         {/* Banner header strip */}
-        <div className="relative h-64 border-b border-zinc-800 overflow-hidden">
-          {/* Full-bleed banner image */}
+        <div className="relative h-64 border-b border-zinc-800 overflow-hidden bg-[#0b0c0e]">
+          {/* Banner image, fully contained so nothing is cropped */}
           <Image
             src={activeProduct.banner}
             alt={`${activeProduct.name} banner`}
             fill
-            className="object-cover object-center"
+            className="object-contain object-center"
             priority
           />
 
           {/* Bottom gradient fade into card background */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0f1012] via-[#0f1012]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0f1012] via-[#0f1012]/50 to-transparent pointer-events-none" />
 
-          {/* Logo + text pinned to bottom of strip */}
+          {/* Product name text pinned to bottom of strip (no logo) */}
           <div className="absolute bottom-0 left-0 right-0 flex items-end gap-4 p-6">
-            <div
-              key={logoKey}
-              style={{ animation: 'logoReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards' }}
-              className="shrink-0"
-            >
-              <Image
-                src={activeProduct.logo}
-                alt={activeProduct.name}
-                width={56}
-                height={56}
-                className="object-contain drop-shadow-xl rounded-xl"
-              />
-            </div>
             <div className="flex-1 min-w-0">
               <h4 className="text-xl font-semibold text-zinc-100 leading-tight">
                 {activeProduct.name}
