@@ -18,91 +18,61 @@ const products: Product[] = [
   {
     id: 'documiner',
     name: 'DocuMiner',
-    tagline: 'Intelligent Document Platform',
+    tagline: 'Document Intelligence System',
     logo: '/logos/logo_documiner_scot.png',
     banner: '/logos/documiner_banner.png',
-    architecture: ['Document Ingestion', 'OCR & Parsing', 'NLP Pipeline', 'Knowledge Store', 'Query Interface'],
-    filename: 'document_pipeline.py',
-    code: `class DocumentPipeline:
-    def __init__(self, config: PipelineConfig):
-        self.ocr   = OCREngine(config.ocr_backend)
-        self.nlp   = NLPProcessor(config.model)
-        self.store = KnowledgeStore(config.db_uri)
+    architecture: ['Web App', 'Desktop App', 'REST API', 'Private / On-prem'],
+    filename: 'documiner.py',
+    code: `# Document Intelligence System
+# Turns documents into searchable, structured intelligence.
+# Runs privately, on your own infrastructure.
 
-    async def ingest(self, doc: Document) -> str:
-        raw       = await self.ocr.extract(doc)
-        entities  = self.nlp.extract_entities(raw)
-        relations = self.nlp.map_relations(entities)
-        return await self.store.commit(relations)
+class DocuMiner:
+    """Public interface. Implementation kept in-house."""
 
-    async def query(self, q: str) -> QueryResult:
-        context = await self.store.semantic_search(q, top_k=8)
-        return await self.llm.generate(q, context=context)`,
-    stack: ['Python', 'TypeScript', 'React', 'PostgreSQL', 'Docker', 'AWS'],
+    def ingest(self, document: Document) -> DocumentId:
+        ...
+
+    def search(self, query: str) -> list[Result]:
+        ...`,
+    stack: ['Python', 'TypeScript', 'React', 'PostgreSQL', 'Docker'],
   },
   {
     id: 'cairn',
     name: 'Cairn',
-    tagline: 'Intelligent Route Optimizing Co-pilot',
+    tagline: 'Route Optimizer',
     logo: '/logos/cairn.png',
     banner: '/logos/cairn_banner.png',
-    architecture: ['Fleet Input', 'Constraint Solver', 'Route Optimizer', 'Voice Co-pilot', 'Driver App'],
-    filename: 'route_optimizer.ts',
-    code: `class RouteOptimizer {
-  private solver: VRPSolver;
-  private fleet:  FleetManager;
+    architecture: ['Web App', 'Mobile App', 'REST API', 'Cloud Deploy'],
+    filename: 'cairn.ts',
+    code: `// Route Optimizer
+// Intelligent route optimization for delivery and field fleets.
 
-  async optimize(orders: Order[]): Promise<RouteMatrix> {
-    const vehicles = await this.fleet.getAvailable();
-    const problem  = new VehicleRoutingProblem({
-      vehicles,
-      orders,
-      constraints: {
-        timeWindows: this.extractWindows(orders),
-        capacity:    vehicles.map(v => v.loadLimit),
-      },
-    });
-    return this.solver.solve(problem, { timeout: 5000 });
-  }
-
-  private extractWindows(orders: Order[]): TimeWindow[] {
-    return orders.map(o => ({
-      id: o.id, from: o.earliest, to: o.latest,
-    }));
-  }
+interface Cairn {
+  // Turn a set of jobs into efficient routes.
+  optimize(jobs: Job[]): Promise<Route[]>;
 }`,
-    stack: ['TypeScript', 'React Native', 'Kotlin', 'Node.js', 'PostgreSQL', 'AWS'],
+    stack: ['TypeScript', 'React Native', 'Node.js', 'PostgreSQL'],
   },
   {
     id: 'muster',
     name: 'Muster',
-    tagline: 'Fleet Compliance & Penalty Intelligence Platform',
+    tagline: 'Fleet Compliance Intelligence',
     logo: '/logos/muster.png',
     banner: '/logos/muster_banner.png',
-    architecture: ['QR Trip Log', 'Telematics Unification', 'Compliance RAG', 'Penalty Attribution', 'Ops Dashboard'],
-    filename: 'penalty_resolver.ts',
-    code: `class PenaltyResolver {
-  private trips:     TripLogStore;
-  private telemetry: TelematicsFeed;
+    architecture: ['Web App', 'Mobile App', 'REST API', 'Cloud Deploy'],
+    filename: 'muster.ts',
+    code: `// Fleet Compliance Intelligence
+// One connected register for the whole fleet.
 
-  async attribute(penalty: Penalty): Promise<Attribution> {
-    const trip = await this.trips.openAt(
-      penalty.vehicleId, penalty.occurredAt,
-    );
-    if (!trip) return { status: 'unattributed', manual: true };
+interface Muster {
+  // A single live view of every vehicle and driver.
+  register(): Promise<FleetRegister>;
 
-    const gps = await this.telemetry.near(
-      penalty.vehicleId, penalty.occurredAt, penalty.location,
-    );
-    return {
-      driver:     trip.driver,
-      tripId:     trip.id,
-      confidence: gps.corroborated ? 0.97 : 0.88,
-      status:     'resolved',
-    };
-  }
+  // Compliance status at a glance.
+  compliance(vehicle: VehicleId): Promise<Status>;
 }`,
-    stack: ['TypeScript', 'Next.js', 'FastAPI', 'PostgreSQL', 'Docker', 'AWS'],
+    stack: ['TypeScript', 'Next.js', 'Python', 'PostgreSQL'],
   },
   {
     id: 'qailab',
