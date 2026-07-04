@@ -41,12 +41,12 @@ const products: Product[] = [
     stack: ['Python', 'TypeScript', 'React', 'PostgreSQL', 'Docker', 'AWS'],
   },
   {
-    id: 'routemind',
-    name: 'RouteMind',
-    tagline: 'Intelligent Route Optimizing Platform',
-    logo: '/logos/route_mind.png',
-    banner: '/logos/RouteMind_banner.png',
-    architecture: ['Fleet Input', 'Constraint Solver', 'Route Optimizer', 'Real-time Dispatch', 'Driver App'],
+    id: 'cairn',
+    name: 'Cairn',
+    tagline: 'Intelligent Route Optimizing Co-pilot',
+    logo: '/logos/cairn.png',
+    banner: '/logos/cairn_banner.png',
+    architecture: ['Fleet Input', 'Constraint Solver', 'Route Optimizer', 'Voice Co-pilot', 'Driver App'],
     filename: 'route_optimizer.ts',
     code: `class RouteOptimizer {
   private solver: VRPSolver;
@@ -72,6 +72,37 @@ const products: Product[] = [
   }
 }`,
     stack: ['TypeScript', 'React Native', 'Kotlin', 'Node.js', 'PostgreSQL', 'AWS'],
+  },
+  {
+    id: 'muster',
+    name: 'Muster',
+    tagline: 'Fleet Compliance & Penalty Intelligence Platform',
+    logo: '/logos/muster.png',
+    banner: '/logos/muster_banner.png',
+    architecture: ['QR Trip Log', 'Telematics Unification', 'Compliance RAG', 'Penalty Attribution', 'Ops Dashboard'],
+    filename: 'penalty_resolver.ts',
+    code: `class PenaltyResolver {
+  private trips:     TripLogStore;
+  private telemetry: TelematicsFeed;
+
+  async attribute(penalty: Penalty): Promise<Attribution> {
+    const trip = await this.trips.openAt(
+      penalty.vehicleId, penalty.occurredAt,
+    );
+    if (!trip) return { status: 'unattributed', manual: true };
+
+    const gps = await this.telemetry.near(
+      penalty.vehicleId, penalty.occurredAt, penalty.location,
+    );
+    return {
+      driver:     trip.driver,
+      tripId:     trip.id,
+      confidence: gps.corroborated ? 0.97 : 0.88,
+      status:     'resolved',
+    };
+  }
+}`,
+    stack: ['TypeScript', 'Next.js', 'FastAPI', 'PostgreSQL', 'Docker', 'AWS'],
   },
   {
     id: 'qailab',

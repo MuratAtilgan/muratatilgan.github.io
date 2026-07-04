@@ -13,9 +13,9 @@ export default function Experience() {
     },
     {
       title: "Systems Architect & Developer",
-      company: "RouteMind",
+      company: "Cairn",
       period: "2024 – Present",
-      description: "Engineered an intelligent route optimization platform for fleet and delivery operations. Architected constraint-based vehicle routing algorithms with real-time dispatch and a cross-platform mobile driver application.",
+      description: "Engineered an intelligent route optimization co-pilot for fleet and delivery operations. Architected constraint-based vehicle routing algorithms with real-time dispatch, a multilingual in-cab voice co-pilot, and a cross-platform mobile driver application.",
     },
     {
       title: "Executive Leadership & Strategic Operations",
